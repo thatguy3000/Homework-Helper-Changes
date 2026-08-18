@@ -1,0 +1,10 @@
+{
+  "name": "Homework Helper",
+  "short_name": "Homework",
+  "description": "Local-first planning and tutoring for students.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f6f4",
+  "theme_color": "#17695e",
+  "icons": []
+}
