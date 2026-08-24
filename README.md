@@ -32,6 +32,29 @@ npm start
 
 Open `http://localhost:3000`. The production server listens on `0.0.0.0` by default, so another device on the same network can use `http://YOUR-PC-IP:3000` after the operating-system firewall allows inbound TCP port 3000.
 
+### Keep the local development server running on Windows
+
+Install the per-user background server once:
+
+```powershell
+npm run server:install
+```
+
+It starts immediately, runs without an open PowerShell window, starts again whenever you sign in to Windows, and watches source files for changes. Open `http://localhost:3000` after installation.
+
+Use these commands only when you need to manage it:
+
+```text
+npm run server:status     show whether the background server is running
+npm run server:restart    restart after dependency or configuration changes
+npm run server:update     reinstall changed dependencies and restart
+npm run server:stop       stop it temporarily
+npm run server:start      start it again
+npm run server:uninstall  remove the Windows startup task
+```
+
+The server log is written to `logs/dev-server.log`. Use `npm run server:update` instead of running `npm ci` while the background server is active; the update command avoids Windows file locks by stopping and restarting the server for you.
+
 For an internet-facing server, put Homework Helper behind an HTTPS reverse proxy such as Caddy, restrict access at the network edge, and back up `data/homework-helper.sqlite`. Do not expose the raw development server to the public internet.
 
 See [DEPLOYMENT.md](DEPLOYMENT.md) for Windows and Linux service examples, backup guidance, environment variables, and production cautions.

@@ -7,12 +7,19 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "vinext dev",
+    "dev": "vinext dev --hostname 127.0.0.1",
     "build": "vinext build",
     "start": "vinext start",
     "test": "npm run build && node --experimental-strip-types --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "server:install": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows-dev-server.ps1 install",
+    "server:uninstall": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows-dev-server.ps1 uninstall",
+    "server:start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows-dev-server.ps1 start",
+    "server:stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows-dev-server.ps1 stop",
+    "server:restart": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows-dev-server.ps1 restart",
+    "server:update": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows-dev-server.ps1 update",
+    "server:status": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows-dev-server.ps1 status"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",
